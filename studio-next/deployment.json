@@ -1,0 +1,25 @@
+{
+ "date": "2026-10-11",
+ "radar": {
+  "address": "0x5f5ce46A8096920B177914d119C1Af048C29BE71",
+  "deploy_tx": "0x3ba8a93e2d3a9715ad30e1bc0f81fdcb929cabbb4c35458b8bc566adac81cd85",
+  "sha256": "ac50a737edd42187fbef6112472b47b81db829a4fd3552b07aa75ad9a12f9838"
+ },
+ "shift": {
+  "address": "0x0eF30bA1a5B015721A6Ca0989DA68E119bD11c69",
+  "deploy_tx": "0xea52e074f80bd1d8faa55c78c9d15020f3ef48e47228d1a5e804a6e34f6d3c72"
+ },
+ "found_live": [
+  "**The same graded rule answered three different issuers.** Circle's terms against the capture of 2 October 2026 came back `UNCHANGED` (100% of the cap), Circle against October 2024 came back `CHANGED_NOT_ADVERSE` (still 100%: two areas changed, both read in full and judged not adverse), and Tether against December 2023 came back `MATERIAL_ADVERSE_CHANGE` (0% until a person signs it off). All three verdicts are TermsShift's own, read fresh from the issuers' live pages by its validators during this run.",
+  "**A person is in the loop exactly where the evidence is adverse.** Allocating to Tether was refused as `ADVERSE_UNACKNOWLEDGED`. Once the owner signed off with a note, the same call was allowed up to 50% of the cap, and the 200,000 that would have passed 50% was refused with the amount still available.",
+  "**The sign-off follows the wording, not the check.** After the sign-off the owner asked TermsShift to check Tether again (a new check id, a new timestamp); the radar still reported `ADVERSE_ACKNOWLEDGED` with `current: true`, because the digest of what changed was identical, and the last 100,000 was allowed.",
+  "**Nothing to sign off, nothing signed.** Acknowledging Circle's unchanged terms was refused (`nothing to acknowledge`), and so was a one-word note."
+ ],
+ "superseded": [
+  {
+   "contract": "TermsRadar (trial instance)",
+   "address": "0x65415d34d298AD9B854000389957aEc7A9784D58",
+   "why": "Same code (byte-identical), deployed for a trial run; its state holds trial tracking and sign-offs. Replaced by a clean deployment so every row of the live proof starts from empty."
+  }
+ ]
+}

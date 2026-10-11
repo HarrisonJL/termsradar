@@ -1,0 +1,71 @@
+{
+ "check_id": 1,
+ "checked_at": "2026-10-04T15:58:55.412855+00:00",
+ "facts": {
+  "areas": {
+   "amendment": {
+    "excerpt_digest": "5e253af543acda876922e6ea0e60324eefe1c66fc349eebb57251ebff525cc1e",
+    "new_preview": "",
+    "old_preview": "",
+    "status": "UNCHANGED",
+    "truncated": false
+   },
+   "fees": {
+    "excerpt_digest": "5e253af543acda876922e6ea0e60324eefe1c66fc349eebb57251ebff525cc1e",
+    "new_preview": "",
+    "old_preview": "",
+    "status": "UNCHANGED",
+    "truncated": false
+   },
+   "freezing": {
+    "excerpt_digest": "5e253af543acda876922e6ea0e60324eefe1c66fc349eebb57251ebff525cc1e",
+    "new_preview": "",
+    "old_preview": "",
+    "status": "UNCHANGED",
+    "truncated": false
+   },
+   "redemption": {
+    "excerpt_digest": "5e253af543acda876922e6ea0e60324eefe1c66fc349eebb57251ebff525cc1e",
+    "new_preview": "",
+    "old_preview": "",
+    "status": "UNCHANGED",
+    "truncated": false
+   },
+   "reserves": {
+    "excerpt_digest": "5e253af543acda876922e6ea0e60324eefe1c66fc349eebb57251ebff525cc1e",
+    "new_preview": "",
+    "old_preview": "",
+    "status": "UNCHANGED",
+    "truncated": false
+   },
+   "suspension": {
+    "excerpt_digest": "5e253af543acda876922e6ea0e60324eefe1c66fc349eebb57251ebff525cc1e",
+    "new_preview": "",
+    "old_preview": "",
+    "status": "UNCHANGED",
+    "truncated": false
+   }
+  },
+  "as_of": "2026-10-04",
+  "baseline_capture": "20261002182005",
+  "baseline_digest": "2f6e355748c9edeb5b9c840f308847d545d5b53ce380f35197453047ef9a54f4",
+  "baseline_last_updated": "December 12, 2025",
+  "live_http": 200,
+  "live_last_updated": "December 12, 2025",
+  "live_paragraphs": 204,
+  "problems": []
+ },
+ "labels": {
+  "amendment": "UNCHANGED",
+  "fees": "UNCHANGED",
+  "freezing": "UNCHANGED",
+  "redemption": "UNCHANGED",
+  "reserves": "UNCHANGED",
+  "suspension": "UNCHANGED"
+ },
+ "readings": {},
+ "reasons": [],
+ "submitted_by": "0x5cdb5699bc1038e115A973bb91A646f7E98C075b",
+ "verdict": "UNCHANGED",
+ "watch_id": "circle-since-2026"
+}

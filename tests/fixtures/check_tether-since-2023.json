@@ -1,0 +1,109 @@
+{
+ "check_id": 2,
+ "checked_at": "2026-10-04T16:24:34.585796+00:00",
+ "facts": {
+  "areas": {
+   "amendment": {
+    "excerpt_digest": "a12fef11fb744f112aca284c16077b4e1a412980a157a663a2cba1b4fe98cbbf",
+    "new_preview": "IMPORTANT: These Token Terms of Sale and Service govern the Tether Tokens, Tether Tokens Wallets and the Services (each as defined below).\nBy purchasing or redeeming Tether Tokens, obtaining a Tether Tokens Wallet or accessing or using any of the Services, you acknowledge that you have read, understand, and completely agree to be bound by these Terms.\nIf you do not agree to these Terms, as amended or modified by any subsequent amendment, change or update: (a) do not purchase or redeem Tether Tok",
+    "old_preview": "By creating a Digital Tokens Wallet on the Site or by using any of the Services, you acknowledge that you have read, understand, and completely agree to these Terms of Service, as updated and amended from time to time.\nIf you do not agree to be bound by these Terms of Service or with any subsequent amendments, changes, or updates, you may not use any of the Services, and if you do use any of the Services you will be bound by the Terms of Service, as amended; your only recourse in the case of you",
+    "status": "CHANGED",
+    "truncated": true
+   },
+   "fees": {
+    "excerpt_digest": "80aa6d1766e7822e53ca742fa7d8ce18896ea5d57cc0c3047e2ae0d9bf1a1ef2",
+    "new_preview": "The following documents are incorporated into these Terms by reference: the Risk Disclosure Statement ; the Anti-Spam Policy ; the Law Enforcement Requests Policy ; and the Fee Schedule (the \" Incorporated Materials \").\nAlso, these Terms should be read in conjunction with the Privacy Statement and the Cookies Notice .\nIn particular, please note that all transactions involving the Tether Tokens may be subject to fees levied by Tether as set out and updated in the Fees Schedule from time to time o",
+    "old_preview": "For the avoidance of doubt, these Terms of Service have two Parties: you and either TIL or TLTD.\nThe following documents are incorporated into these Terms of Service by reference: the Risk Disclosure Statement ; the Privacy Policy ; the Anti-Spam Policy ; the Law Enforcement Requests Policy ; and the Fees Schedule .\nAlso, the Terms of Service should be read in conjunction with the Privacy Policy and the Cookies Policy .\nIn particular, please note that all transactions of Digital Tokens on or off",
+    "status": "CHANGED",
+    "truncated": true
+   },
+   "freezing": {
+    "excerpt_digest": "aecb1939de2acb1c67f78dbba56f661618c418d686fbba9f235547b2c69ada6c",
+    "new_preview": "Only Persons (as defined below) who meet the requirements of these Terms are permitted to access the Site or use the Services.\nAny Person who is not eligible that utilizes the Services or who accesses the Site will be in breach of these Terms and may have any Fiat, Digital Tokens (each as defined below), funds, proceeds or other property, confiscated.\nRight to Use the Service : If you (a) have a Tether Tokens Wallet, (b) are not a Prohibited Person, (c) do not operate your Tether Tokens Wallet f",
+    "old_preview": "Any use, whether actual or suspected, as described in this paragraph shall constitute a \" Prohibited Use \".\nIf Tether determines that you have engaged in any Prohibited Use, Tether may address such Prohibited Use through an appropriate sanction, in its sole and absolute discretion.\nSuch sanction may include, but is not limited to, making a report to any Government, law enforcement, or other authorities, without providing any notice of you about any such report; confiscation of any Fiat, funds, p",
+    "status": "CHANGED",
+    "truncated": false
+   },
+   "redemption": {
+    "excerpt_digest": "941e934641a0844d366f999db42849094c8ecb01670eb447974bb7941e971268",
+    "new_preview": "IMPORTANT: These Token Terms of Sale and Service govern the Tether Tokens, Tether Tokens Wallets and the Services (each as defined below).\nBy purchasing or redeeming Tether Tokens, obtaining a Tether Tokens Wallet or accessing or using any of the Services, you acknowledge that you have read, understand, and completely agree to be bound by these Terms.\nIf you do not agree to these Terms, as amended or modified by any subsequent amendment, change or update: (a) do not purchase or redeem Tether Tok",
+    "old_preview": "\" Tether Token \" means the tether Digital Token issued and redeemed by Tether;\nForks: Tether issues and redeems Tether Tokens.\nTether Tokens may be used, kept, or exchanged online wherever parties are willing to accept Tether Tokens.\nTether Tokens are 100% backed by by Tether's Reserves.\nTether Tokens are denominated in a range of Fiat.\nFor example, if you purchase EURT, your Tether Tokens are 1-to-1 pegged to Euros.\nIf you cause to be issued EURT 100.00, Tether holds Reserves valued at \u20ac100.00 ",
+    "status": "CHANGED",
+    "truncated": true
+   },
+   "reserves": {
+    "excerpt_digest": "8b56f43017fd57279037d4435c3b2f6507bf5fbc6e15bb980de4d95d41bba91b",
+    "new_preview": "\" Reserves \" has the meaning set out in paragraph 4.1 of these Terms;\n\" User Insolvency Event \" means if you are subject to any of the following insolvency events: (i) you stop or suspend payment of any of your debts or are unable to, or admit your inability to, pay your debts as they fall due;\n(ii) you commence negotiations, or enter into any composition, compromise, assignment or arrangement, with one or more of your creditors with a view to rescheduling any of your indebtedness (because of ac",
+    "old_preview": "\" Reserves \" means traditional currency and cash equivalents and, from time to time, may include other assets and receivables from loans made by Tether to third parties, which may include affiliated entities;\nForks: Tether issues and redeems Tether Tokens.\nTether Tokens may be used, kept, or exchanged online wherever parties are willing to accept Tether Tokens.\nTether Tokens are 100% backed by by Tether's Reserves.\nTether Tokens are denominated in a range of Fiat.\nFor example, if you purchase EU",
+    "status": "CHANGED",
+    "truncated": true
+   },
+   "suspension": {
+    "excerpt_digest": "64c3ac690627428b28567ffada3aa9f5b96bf6536980cc50ffbe75894b68e8be",
+    "new_preview": "\" Losses \" means, collectively, any claim, application, loss, injury, delay, accident, cost, business interruption costs, or any other expenses (including attorneys' fees or the costs of any claim or suit), including any incidental, direct, indirect, general, special, punitive, exemplary, or consequential damages, loss of goodwill or business profits, work stoppage, data loss, computer failure or malfunction, or any and all other commercial losses;\n\" User Insolvency Event \" means if you are subj",
+    "old_preview": "Licence to Use the Site: If you comply with these Terms of Service, Tether grants you the limited right to use the Site and the Services.\nThe right to use the Site and the Services is a personal, restricted, non-exclusive, non-transferable, non-sublicensable, revocable, limited licence, and it is subject to the limitations and obligations in these Terms of Service.\nNothing in these Terms of Service gives you any licence (other than as set out in this paragraph), right, title, or ownership of, in",
+    "status": "CHANGED",
+    "truncated": true
+   }
+  },
+  "as_of": "2026-10-04",
+  "baseline_capture": "20240915223352",
+  "baseline_digest": "2c6576b20f07391fdb90185ad1c7dbadb8f4913734290212f7b22892b4ef0a86",
+  "baseline_last_updated": "December 7, 2023",
+  "live_http": 200,
+  "live_last_updated": "February 26, 2026",
+  "live_paragraphs": 171,
+  "problems": []
+ },
+ "labels": {
+  "amendment": "UNDETERMINED",
+  "fees": "ADVERSE",
+  "freezing": "ADVERSE",
+  "redemption": "ADVERSE",
+  "reserves": "ADVERSE",
+  "suspension": "ADVERSE"
+ },
+ "readings": {
+  "amendment": {
+   "adverse": false,
+   "evidence": null,
+   "grounded": false
+  },
+  "fees": {
+   "adverse": true,
+   "evidence": "Tether may from time to time make redemptions of Tether Tokens through the Site subject to minimum redemption amounts and other requirements.",
+   "grounded": true
+  },
+  "freezing": {
+   "adverse": true,
+   "evidence": "Tether may suspend or terminate your access to the Site or any of the Services, freeze any Tether Tokens held by you, or terminate your Tether Token Wallet, as required by applicable Law or where Tether, in its sole discretion, determines it is prudent to do so",
+   "grounded": true
+  },
+  "redemption": {
+   "adverse": true,
+   "evidence": "Tether may from time to time make redemptions of Tether Tokens through the Site subject to minimum redemption amounts and other requirements.",
+   "grounded": true
+  },
+  "reserves": {
+   "adverse": true,
+   "evidence": "that you acknowledge and agree that Fiat, Digital Tokens or other property reflected in your Tether Tokens Wallet are not segregated assets held in your name or for your benefit but reflected only in the books and records of Tether;",
+   "grounded": true
+  },
+  "suspension": {
+   "adverse": true,
+   "evidence": "Tether may suspend or terminate your access to the Site or any of the Services, freeze any Tether Tokens held by you, or terminate your Tether Token Wallet, as required by applicable Law or where Tether, in its sole discretion, determines it is prudent to do so",
+   "grounded": true
+  }
+ },
+ "reasons": [
+  "adverse:fees",
+  "adverse:freezing",
+  "adverse:redemption",
+  "adverse:reserves",
+  "adverse:suspension",
+  "undetermined:amendment"
+ ],
+ "submitted_by": "0x5cdb5699bc1038e115A973bb91A646f7E98C075b",
+ "verdict": "MATERIAL_ADVERSE_CHANGE",
+ "watch_id": "tether-since-2023"
+}

@@ -1,0 +1,23 @@
+[
+ {
+  "baseline_timestamp": "20241103153936",
+  "check_count": 1,
+  "label": "Circle USDC Terms vs the version in force Oct 2024",
+  "live_url": "https://www.circle.com/legal/usdc-terms",
+  "watch_id": "circle-since-2024"
+ },
+ {
+  "baseline_timestamp": "20261002182005",
+  "check_count": 1,
+  "label": "Circle USDC Terms vs the version captured 2 Oct 2026",
+  "live_url": "https://www.circle.com/legal/usdc-terms",
+  "watch_id": "circle-since-2026"
+ },
+ {
+  "baseline_timestamp": "20240915223352",
+  "check_count": 1,
+  "label": "Tether Terms vs the version in force Dec 2023",
+  "live_url": "https://tether.to/en/legal/",
+  "watch_id": "tether-since-2023"
+ }
+]

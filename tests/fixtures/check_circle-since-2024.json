@@ -1,0 +1,85 @@
+{
+ "check_id": 0,
+ "checked_at": "2026-10-04T15:58:32.543182+00:00",
+ "facts": {
+  "areas": {
+   "amendment": {
+    "excerpt_digest": "5e253af543acda876922e6ea0e60324eefe1c66fc349eebb57251ebff525cc1e",
+    "new_preview": "",
+    "old_preview": "",
+    "status": "UNCHANGED",
+    "truncated": false
+   },
+   "fees": {
+    "excerpt_digest": "5e253af543acda876922e6ea0e60324eefe1c66fc349eebb57251ebff525cc1e",
+    "new_preview": "",
+    "old_preview": "",
+    "status": "UNCHANGED",
+    "truncated": false
+   },
+   "freezing": {
+    "excerpt_digest": "2cde009ccd3e0a8f2aa096b2113ed67c1d77618ae1cbe8fa5afdd71bbe2d7248",
+    "new_preview": "USDC is issued and redeemed in accordance with Circle's blocklisting policy .\nCircle reserves the right to block the transfer of USDC to and from an address on chain as permitted under the blocklisting policy.",
+    "old_preview": "USDC is issued and redeemed in accordance with Circle's blacklisting policy .\nCircle reserves the right to block the transfer of USDC to and from an address on chain as permitted under the blacklisting policy.",
+    "status": "CHANGED",
+    "truncated": false
+   },
+   "redemption": {
+    "excerpt_digest": "2cde009ccd3e0a8f2aa096b2113ed67c1d77618ae1cbe8fa5afdd71bbe2d7248",
+    "new_preview": "USDC is issued and redeemed in accordance with Circle's blocklisting policy .\nCircle reserves the right to block the transfer of USDC to and from an address on chain as permitted under the blocklisting policy.",
+    "old_preview": "USDC is issued and redeemed in accordance with Circle's blacklisting policy .\nCircle reserves the right to block the transfer of USDC to and from an address on chain as permitted under the blacklisting policy.",
+    "status": "CHANGED",
+    "truncated": false
+   },
+   "reserves": {
+    "excerpt_digest": "5e253af543acda876922e6ea0e60324eefe1c66fc349eebb57251ebff525cc1e",
+    "new_preview": "",
+    "old_preview": "",
+    "status": "UNCHANGED",
+    "truncated": false
+   },
+   "suspension": {
+    "excerpt_digest": "5e253af543acda876922e6ea0e60324eefe1c66fc349eebb57251ebff525cc1e",
+    "new_preview": "",
+    "old_preview": "",
+    "status": "UNCHANGED",
+    "truncated": false
+   }
+  },
+  "as_of": "2026-10-04",
+  "baseline_capture": "20241103153936",
+  "baseline_digest": "ae170d0c466e4473a471d7ec9f021de84906ef9dda181e740391ea93ab2f24a4",
+  "baseline_last_updated": "October 4, 2024",
+  "live_http": 200,
+  "live_last_updated": "December 12, 2025",
+  "live_paragraphs": 204,
+  "problems": []
+ },
+ "labels": {
+  "amendment": "UNCHANGED",
+  "fees": "UNCHANGED",
+  "freezing": "NEUTRAL",
+  "redemption": "NEUTRAL",
+  "reserves": "UNCHANGED",
+  "suspension": "UNCHANGED"
+ },
+ "readings": {
+  "freezing": {
+   "adverse": false,
+   "evidence": null,
+   "grounded": false
+  },
+  "redemption": {
+   "adverse": false,
+   "evidence": null,
+   "grounded": false
+  }
+ },
+ "reasons": [
+  "changed:freezing",
+  "changed:redemption"
+ ],
+ "submitted_by": "0x5cdb5699bc1038e115A973bb91A646f7E98C075b",
+ "verdict": "CHANGED_NOT_ADVERSE",
+ "watch_id": "circle-since-2024"
+}

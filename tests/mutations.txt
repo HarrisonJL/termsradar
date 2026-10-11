@@ -1,0 +1,197 @@
+the digest ignores a changed area's wording
+---
+[a.get("status"), a.get("excerpt_digest", "")]
+---
+[a.get("status"), ""]
+===
+the digest ignores a changed area's status
+---
+[a.get("status"), a.get("excerpt_digest", "")]
+---
+["", a.get("excerpt_digest", "")]
+===
+the digest includes unchanged areas
+---
+if a.get("status") != "UNCHANGED"}
+---
+if True}
+===
+the digest ignores which area changed
+---
+changed = {name: [a.get("status"), a.get("excerpt_digest", "")] for name, a in areas.items()
+---
+changed = {"x": [a.get("status"), a.get("excerpt_digest", "")] for name, a in areas.items()
+===
+the digest depends on the order the areas arrive in
+---
+return hashlib.sha256(json.dumps(changed, sort_keys=True).encode()).hexdigest()
+---
+return hashlib.sha256(json.dumps(changed).encode()).hexdigest()
+===
+a missing check allows allocation
+---
+        return {"posture": "NO_CHECK", "allowed_pct": 0,
+---
+        return {"posture": "NO_CHECK", "allowed_pct": 100,
+===
+a stale check is allowed
+---
+    if not 0 <= age <= max_age:
+---
+    if False:
+===
+a check from the future is allowed
+---
+    if not 0 <= age <= max_age:
+---
+    if not age <= max_age:
+===
+the freshness limit is exclusive
+---
+    if not 0 <= age <= max_age:
+---
+    if not 0 <= age < max_age:
+===
+an undetermined check allows allocation
+---
+        return {"posture": "UNDETERMINED", "allowed_pct": 0,
+---
+        return {"posture": "UNDETERMINED", "allowed_pct": 100,
+===
+unchanged terms allow nothing
+---
+        return {"posture": "CLEAR", "allowed_pct": 100,
+---
+        return {"posture": "CLEAR", "allowed_pct": 0,
+===
+changed-but-not-adverse terms allow nothing
+---
+        return {"posture": "CHANGED", "allowed_pct": 100,
+---
+        return {"posture": "CHANGED", "allowed_pct": 0,
+===
+a sign-off is not needed after an adverse change
+---
+if ack is not None and ack["change_digest"] == _change_digest(check):
+---
+if True:
+===
+any sign-off counts
+---
+if ack is not None and ack["change_digest"] == _change_digest(check):
+---
+if ack is not None:
+===
+a sign-off is not bound to the wording
+---
+if ack is not None and ack["change_digest"] == _change_digest(check):
+---
+if ack is not None and ack["change_digest"]:
+===
+a signed-off adverse change allows the full cap
+---
+            return {"posture": "ADVERSE_ACKNOWLEDGED", "allowed_pct": acknowledged_pct,
+---
+            return {"posture": "ADVERSE_ACKNOWLEDGED", "allowed_pct": 100,
+===
+an unsigned adverse change allows something
+---
+        return {"posture": "ADVERSE_UNACKNOWLEDGED", "allowed_pct": 0,
+---
+        return {"posture": "ADVERSE_UNACKNOWLEDGED", "allowed_pct": 10,
+===
+an unrecognised verdict allows allocation
+---
+    return {"posture": "UNKNOWN_VERDICT", "allowed_pct": 0,
+---
+    return {"posture": "UNKNOWN_VERDICT", "allowed_pct": 100,
+===
+the limit rounds up
+---
+    return cap * allowed_pct // 100
+---
+    return -(-cap * allowed_pct // 100)
+===
+the limit ignores the percentage
+---
+    return cap * allowed_pct // 100
+---
+    return cap
+===
+what is left can go negative
+---
+    return max(_limit(cap, allowed_pct) - allocated, 0)
+---
+    return _limit(cap, allowed_pct) - allocated
+===
+what is left ignores earlier allocations
+---
+    return max(_limit(cap, allowed_pct) - allocated, 0)
+---
+    return max(_limit(cap, allowed_pct), 0)
+===
+anyone can track
+---
+        _require(gl.message.sender_address == self.owner, "only the owner can track an issuer")
+---
+        _require(True, "only the owner can track an issuer")
+===
+anyone can acknowledge
+---
+        _require(gl.message.sender_address == self.owner, "only the owner can acknowledge a change")
+---
+        _require(True, "only the owner can acknowledge a change")
+===
+anyone can allocate
+---
+        _require(gl.message.sender_address == self.owner, "only the owner can allocate")
+---
+        _require(True, "only the owner can allocate")
+===
+a zero cap is accepted
+---
+        _require(cap > 0, "cap must be positive")
+---
+        _require(True, "cap must be positive")
+===
+a zero amount is accepted
+---
+        _require(amount > 0, "amount must be positive")
+---
+        _require(True, "amount must be positive")
+===
+an untracked issuer can be acknowledged
+---
+        _require(watch_id in self.tracked, "not tracked")
+        _require(MIN_NOTE_LEN
+---
+        _require(True, "not tracked")
+        _require(MIN_NOTE_LEN
+===
+an untracked issuer can be allocated
+---
+        _require(watch_id in self.tracked, "not tracked")
+        t = self.tracked[watch_id]
+        check
+---
+        _require(True, "not tracked")
+        t = self.tracked[watch_id]
+        check
+===
+a stale configuration is accepted
+---
+        _require(max_age_seconds > 0, "max_age_seconds must be positive")
+---
+        _require(True, "max_age_seconds must be positive")
+===
+the acknowledged percentage may exceed 100
+---
+        _require(0 <= acknowledged_pct <= 100, "acknowledged_pct must be between 0 and 100")
+---
+        _require(True, "acknowledged_pct must be between 0 and 100")
+===
+the ladder reports a wrong acknowledged percentage
+---
+"ADVERSE_ACKNOWLEDGED": self.acknowledged_pct,
+---
+"ADVERSE_ACKNOWLEDGED": 100,
