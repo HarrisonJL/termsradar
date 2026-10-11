@@ -99,3 +99,6 @@ q { quotes: "\201C" "\201D"; font-size: 13px; color: var(--ink); }
 table.areas td { vertical-align: top; }
 table.ladder td:nth-child(3) { color: var(--muted); }
 .result { font-size: 14px; }
+
+.notice { margin-top: 12px; padding: 10px 12px; border-radius: 8px; background: var(--warn-bg); color: var(--ink); font-size: 13.5px; border: 1px solid var(--warn); }
+.form label.pick { display: flex; flex-direction: row; align-items: center; gap: 6px; color: var(--ink); font-size: 13px; }

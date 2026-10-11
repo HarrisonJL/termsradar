@@ -267,6 +267,11 @@ export default function App() {
               <Pill tone={POSTURE_TONE[sel.posture] ?? "none"}>{POSTURE_NAME[sel.posture] ?? sel.posture} · {sel.allowed_pct}%</Pill>
             </div>
             <Bar s={sel} />
+            {["STALE", "NO_CHECK", "UNDETERMINED"].includes(sel.posture) && (
+              <div className="notice">{sel.posture === "UNDETERMINED"
+                ? "TermsShift's latest check could not settle every area, so the radar counts this issuer as 0%."
+                : `TermsShift has no check fresher than ${duration(maxAge * 1000)}, so the radar counts this issuer as 0%.`} Ask TermsShift for a fresh check below: it takes about a minute and anyone can do it.</div>
+            )}
             {checkError && <div className="err">Couldn't read TermsShift's check: {checkError}</div>}
             {!check && !checkError && sel.check_id !== null && <p className="sub">Reading TermsShift's check…</p>}
             {check && check.verdict !== "NONE" && <div style={{ marginTop: 12 }}><AreaTable check={check} /></div>}
