@@ -7,7 +7,7 @@
 | Network | GenLayer Studio Next (chain 61997) |
 | TermsRadar | [`0x5f5ce46A8096920B177914d119C1Af048C29BE71`](https://explorer-studio-dev.genlayer.com/address/0x5f5ce46A8096920B177914d119C1Af048C29BE71) |
 | Reads | [TermsShift `0x0eF30bA1…D11c69`](https://explorer-studio-dev.genlayer.com/address/0x0eF30bA1a5B015721A6Ca0989DA68E119bD11c69) (the published oracle: its validators read Circle's and Tether's live terms) |
-| Live app | TERMSRADAR_URL (source in [`web/`](web/)) |
+| Live app | [termsradar.vercel.app](https://termsradar.vercel.app) (source in [`web/`](web/)) |
 | Live proof | [CONTRACT.md](CONTRACT.md): three real issuers, the whole allocation ladder, a sign-off that survives a re-check, every refusal, every transaction linked |
 | Tests | 32 Direct Mode tests on TermsShift's real check records; 32 safety mutations, all killed; 24 web-app tests |
 
