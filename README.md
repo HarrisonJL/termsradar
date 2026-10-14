@@ -6,12 +6,17 @@
 |---|---|
 | Network | GenLayer Studio Next (chain 61997) |
 | TermsRadar | [`0x5f5ce46A8096920B177914d119C1Af048C29BE71`](https://explorer-studio-dev.genlayer.com/address/0x5f5ce46A8096920B177914d119C1Af048C29BE71) |
-| Reads | [TermsShift `0x0eF30bA1…D11c69`](https://explorer-studio-dev.genlayer.com/address/0x0eF30bA1a5B015721A6Ca0989DA68E119bD11c69) (the published oracle: its validators read Circle's and Tether's live terms) |
+| Reads | [TermsShift `0x0eF30bA1…D11c69`](https://explorer-studio-dev.genlayer.com/address/0x0eF30bA1a5B015721A6Ca0989DA68E119bD11c69), the contract whose validators read Circle's and Tether's live terms. **Its exact deployed source is included in this repository:** [`dependencies/termsshift/`](dependencies/termsshift/) |
 | Live app | [termsradar.vercel.app](https://termsradar.vercel.app) (source in [`web/`](web/)) |
 | Live proof | [CONTRACT.md](CONTRACT.md): three real issuers, the whole allocation ladder, a sign-off that survives a re-check, every refusal, every transaction linked |
-| Tests | 32 Direct Mode tests on TermsShift's real check records; 32 safety mutations, all killed; 24 web-app tests |
+| Trust path | [TRUST_PATH.md](TRUST_PATH.md): from the issuer's page, through TermsShift's validators, to an allocation, with line references, tests and live transactions |
+| Tests | 32 Direct Mode tests on TermsShift's real check records; 32 safety mutations, all killed; 9 tests tying the radar to the included TermsShift (whose own 44 tests run in place); 24 web-app tests |
 
 > **Accounting, not custody.** The radar records and limits allocations; it does not hold or move tokens. It is the control a treasury's own contracts or process consult before moving value, not the treasury itself.
+
+## Where the non-deterministic part is
+
+**Not in the radar, and on purpose.** `contracts/terms_radar.py` is a deterministic policy: no web access, no LLM. It cannot be a second, unaudited source of truth about an issuer; it turns one agreed record into a rule and a recorded human decision. Everything that reads the real world, uses a model and reaches validator consensus happens in **TermsShift**, which the radar reads, and TermsShift's **exact deployed source is in this repository** ([`dependencies/termsshift/`](dependencies/termsshift/), byte-identical to the code on-chain). [TRUST_PATH.md](TRUST_PATH.md) walks the whole path with line references, the tests that keep it honest (`tests/test_trust_path.py`) and the live transactions that ran it.
 
 ## Why this exists
 
@@ -101,12 +106,14 @@ if status["allowed_pct"] == 0 or int(status["available"]) < amount:
 
 ```bash
 python3 -m venv .venv && .venv/bin/pip install genlayer-test==0.29.2 genvm-linter==0.11.0 pytest
-.venv/bin/pytest tests -q                       # 32 tests on TermsShift's real check records
+.venv/bin/pytest tests -q                       # 32 contract tests + 9 trust-path tests
+(cd dependencies/termsshift && python3 scripts/fetch_fixtures.py && ../../.venv/bin/pytest tests -q)   # TermsShift's own 44
 .venv/bin/genvm-lint check contracts/terms_radar.py
 python3 scripts/mutation_check.py               # every safety mutation must be killed
 
 cd studio-next && npm ci
 npx tsx verify_code.ts <address> terms_radar_studio_next.py     # on-chain code == this repo
+npx tsx verify_dependency.ts                                    # on-chain TermsShift == dependencies/termsshift
 
 cd ../web && npm ci && npm test && npm run build && npm run preview
 ```
@@ -116,8 +123,10 @@ cd ../web && npm ci && npm test && npm run build && npm run preview
 ```
 contracts/terms_radar.py              tested source (GenVM v0.2.11)
 contracts/terms_radar_studio_next.py  deployed port (Studio Next); web/src/lib carries a byte-identical copy
-tests/                                Direct Mode tests, TermsShift's real check records, mutations.txt
-scripts/                              port, mutation check, CONTRACT.md builder
+dependencies/termsshift/              TermsShift: the exact deployed contract the radar reads (source, tests, docs, licence)
+TRUST_PATH.md                         the end-to-end path, generated from the code and the live proof
+tests/                                Direct Mode tests, TermsShift's real check records, mutations.txt, test_trust_path.py
+scripts/                              port, mutation check, CONTRACT.md and TRUST_PATH.md builders
 studio-next/                          deploy, live proof (prove.ts, live_proof.json), verify_code.ts
 web/                                  the live app (Vite + React + genlayer-js)
 research/                             what the radar reads from TermsShift, and why

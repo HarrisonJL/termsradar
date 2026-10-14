@@ -1,0 +1,33 @@
+{
+  "about": "Internet Archive captures (raw, as captured - the id_ form) used as test inputs. Downloaded and SHA-256-verified by scripts/fetch_fixtures.py into tests/fixtures/cache/ (gitignored). 'memento_datetime' and 'original' are the archive's own response headers for each capture, served to the contract by the test mocks exactly as the archive sends them.",
+  "captures": {
+    "circle_usdc_2024-11-03": {
+      "url": "https://web.archive.org/web/20241103153936id_/https://www.circle.com/legal/usdc-terms",
+      "memento_datetime": "Sun, 03 Nov 2024 15:39:36 GMT",
+      "original": "https://circle.com/legal/usdc-terms",
+      "what": "Circle USDC Terms, 'Last Updated: October 4, 2024'",
+      "sha256": "396eb7d92be0af04508aa775a03f1c99f51d892aca165f7d806f4b2417c52a36"
+    },
+    "circle_usdc_2026-10-02": {
+      "url": "https://web.archive.org/web/20261002182005id_/https://www.circle.com/legal/usdc-terms",
+      "memento_datetime": "Fri, 02 Oct 2026 18:20:05 GMT",
+      "original": "https://www.circle.com/legal/usdc-terms",
+      "what": "Circle USDC Terms, 'Last Updated: December 12, 2025' - watched clauses identical to the live page on 2026-10-04",
+      "sha256": "50f8551eda33e29fc819ad8d834edff8a90d9cda7341ba72367f0cb2643da472"
+    },
+    "tether_legal_2024-09-15": {
+      "url": "https://web.archive.org/web/20240915223352id_/https://tether.to/en/legal/",
+      "memento_datetime": "Sun, 15 Sep 2024 22:33:52 GMT",
+      "original": "https://tether.to/en/legal/",
+      "what": "Tether Terms of Service, 'Last updated: December 7, 2023'",
+      "sha256": "d60eee0e8ed5a5f627dd29efda140552152889fab7afb5ec16a8b5fe0fd0bc47"
+    },
+    "tether_legal_2026-03-06": {
+      "url": "https://web.archive.org/web/20260306150120id_/https://tether.to/en/legal/",
+      "memento_datetime": "Fri, 06 Mar 2026 15:01:20 GMT",
+      "original": "https://tether.to/en/legal/",
+      "what": "Tether Token Terms, 'Last updated: February 26, 2026' - watched clauses identical to the live page on 2026-10-04",
+      "sha256": "6c067d717c3a7dd90b130d74751e0055d1c5e125648e4a507c023919badf1879"
+    }
+  }
+}

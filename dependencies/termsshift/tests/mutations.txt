@@ -1,0 +1,212 @@
+inexact capture accepted
+---
+        if capture != timestamp:
+            problems.append("baseline_not_exact_capture")
+---
+        if False:
+            problems.append("baseline_not_exact_capture")
+===
+capture of another page accepted
+---
+        if _url_key(original) != _url_key(live_url):
+            problems.append("baseline_is_another_page")
+---
+        if False:
+            problems.append("baseline_is_another_page")
+===
+missing capture accepted
+---
+    if status != 200:
+        problems.append(f"baseline_http_{status}")
+---
+    if False:
+        problems.append(f"baseline_http_{status}")
+===
+registration stores a refused baseline
+---
+        _require(not baseline["problems"], "baseline refused: " + ", ".join(baseline["problems"]))
+---
+        pass
+===
+live http failure ignored
+---
+    if live_status != 200:
+        problems.append(f"live_http_{live_status}")
+---
+    if False:
+        problems.append(f"live_http_{live_status}")
+===
+block page read as terms
+---
+    elif len(live_paragraphs) * 100 < watch["baseline_paragraphs"] * MIN_LIVE_PARAGRAPH_RATIO_PCT:
+---
+    elif False:
+===
+navigation lines treated as clauses
+---
+        if len(line) >= MIN_PARAGRAPH_CHARS and re.search(r"[.;:](?:\s|$)", line):
+---
+        if len(line) >= 20:
+===
+reserves the right matched as reserves
+---
+        "pattern": r"\breserves?\b(?! the right)|\bbacked\b|\bbacking\b|segregat|bankrupt|insolven",
+---
+        "pattern": r"\breserves?\b|\bbacked\b|\bbacking\b|segregat|bankrupt|insolven",
+===
+removed area not adverse
+---
+    adverse = [n for n, lab in labels.items() if lab in ("ADVERSE", "REMOVED")]
+---
+    adverse = [n for n, lab in labels.items() if lab in ("ADVERSE",)]
+===
+ungrounded adverse claim published
+---
+        return "ADVERSE" if reading["grounded"] else "UNDETERMINED"
+---
+        return "ADVERSE"
+===
+grounding always true
+---
+    return {"adverse": adverse, "evidence": evidence, "grounded": adverse and _grounded(evidence, area)}
+---
+    return {"adverse": adverse, "evidence": evidence, "grounded": adverse}
+===
+truncated neutral accepted
+---
+    return "UNDETERMINED" if area["truncated"] else "NEUTRAL"
+---
+    return "NEUTRAL"
+===
+unreadable answer treated as neutral
+---
+    if reading is None:
+        return "UNDETERMINED"
+---
+    if reading is None:
+        return "NEUTRAL"
+===
+undetermined outranks adverse
+---
+    if adverse:
+        return ["MATERIAL_ADVERSE_CHANGE", [f"adverse:{n}" for n in adverse] + [f"undetermined:{n}" for n in undetermined], labels]
+    if undetermined:
+        return ["UNDETERMINED", [f"undetermined:{n}" for n in undetermined], labels]
+---
+    if undetermined:
+        return ["UNDETERMINED", [f"undetermined:{n}" for n in undetermined], labels]
+    if adverse:
+        return ["MATERIAL_ADVERSE_CHANGE", [f"adverse:{n}" for n in adverse] + [f"undetermined:{n}" for n in undetermined], labels]
+===
+undetermined treated as safe
+---
+    if undetermined:
+        return ["UNDETERMINED", [f"undetermined:{n}" for n in undetermined], labels]
+    if neutral:
+---
+    if neutral:
+===
+consumer accepts adverse
+---
+SAFE_VERDICTS = ("UNCHANGED", "CHANGED_NOT_ADVERSE")
+---
+SAFE_VERDICTS = ("UNCHANGED", "CHANGED_NOT_ADVERSE", "MATERIAL_ADVERSE_CHANGE")
+===
+freshness ignored
+---
+        return 0 <= age <= max_age_seconds
+---
+        return True
+===
+ordinal dates unread
+---
+    m = re.search(r"last updated:?\s*([A-Z][a-z]+) (\d{1,2})(?:st|nd|rd|th)?, (\d{4})", text, re.I)
+---
+    m = re.search(r"last updated:?\s*([A-Z][a-z]+) (\d{1,2}), (\d{4})", text, re.I)
+===
+url validation loosened
+---
+    _require(re.fullmatch(r"https://[A-Za-z0-9.-]+\.[A-Za-z]{2,}(/[A-Za-z0-9._~%/-]*)?", url) is not None,
+---
+    _require(url.startswith("http"),
+===
+validator skips fact digest
+---
+            if leader.get("facts_digest") != _digest(my_facts) or leader.get("facts") != _summary(my_facts):
+---
+            if leader.get("facts") != _summary(my_facts):
+===
+validator skips fact summary
+---
+            if leader.get("facts_digest") != _digest(my_facts) or leader.get("facts") != _summary(my_facts):
+---
+            if leader.get("facts_digest") != _digest(my_facts):
+===
+validator accepts missing readings
+---
+            if sorted(leader["readings"].keys()) != changed:
+                return False
+---
+            if False:
+                return False
+===
+validator skips reading shape
+---
+                if not _reading_shape_ok(theirs):
+                    return False
+---
+                if theirs is not None and not isinstance(theirs, dict):
+                    return False
+===
+validator trusts leader grounding flag
+---
+                if theirs is not None and theirs["grounded"] != (
+                        theirs["adverse"] and _grounded(theirs["evidence"], my_facts["areas"][name])):
+                    return False
+---
+                if False:
+                    return False
+===
+validator ignores verdict disagreement
+---
+            if their_verdict != my_verdict:
+                return False
+---
+            if False:
+                return False
+===
+validator skips adverse confirmation
+---
+                if label == "ADVERSE" and not (mine.get(name) and mine[name]["adverse"]):
+                    return False
+---
+                if False:
+                    return False
+
+===
+check re-reads the archive
+---
+            facts = _check_facts(watch, today, _fetch(watch["live_url"]))
+            readings = _read_changed(facts) if not facts["problems"] else {}
+---
+            _fetch(_snapshot_url(watch["timestamp"], watch["live_url"]))
+            facts = _check_facts(watch, today, _fetch(watch["live_url"]))
+            readings = _read_changed(facts) if not facts["problems"] else {}
+===
+registration skips exact baseline agreement
+---
+            return leader == _baseline_facts(baseline_timestamp, live_url, _fetch(snapshot))
+---
+            return isinstance(leader, dict)
+===
+any one genuine fragment grounds the quote
+---
+    return all(f in new or f in old for f in fragments)
+---
+    return any(f in new or f in old for f in fragments)
+===
+fragments not split - stitched genuine quotes rejected
+---
+                 for f in re.split(r"\.\.\.|\u2026|(?<=[.;])\s+", _squash(evidence))]
+---
+                 for f in [_squash(evidence)]]
