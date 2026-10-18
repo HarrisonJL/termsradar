@@ -1,0 +1,166 @@
+{
+ "address": "0x5f5ce46A8096920B177914d119C1Af048C29BE71",
+ "config": {
+  "acknowledged_pct": 50,
+  "acknowledgement_count": 1,
+  "allocation_count": 4,
+  "max_age_seconds": 86400,
+  "owner": "0x5cdb5699bc1038e115A973bb91A646f7E98C075b",
+  "shift_address": "0x0eF30bA1a5B015721A6Ca0989DA68E119bD11c69",
+  "tracked_count": 3
+ },
+ "rules": {
+  "ladder": {
+   "ADVERSE_ACKNOWLEDGED": 50,
+   "ADVERSE_UNACKNOWLEDGED": 0,
+   "CHANGED": 100,
+   "CLEAR": 100,
+   "NO_CHECK": 0,
+   "STALE": 0,
+   "UNDETERMINED": 0
+  },
+  "max_age_seconds": 86400,
+  "min_note_length": 20
+ },
+ "statuses": [
+  {
+   "acknowledgement": null,
+   "age_seconds": 121,
+   "allocated": "500000",
+   "allowed_pct": 100,
+   "available": "500000",
+   "cap": "1000000",
+   "check_id": 17,
+   "checked_at": "2026-10-18T14:00:14.714674+00:00",
+   "label": "Circle USDC Terms vs the version in force Oct 2024",
+   "limit": "1000000",
+   "posture": "CHANGED",
+   "reason": "the terms changed, and every change was read in full and judged not adverse to holders",
+   "tracked": true,
+   "verdict": "CHANGED_NOT_ADVERSE",
+   "watch_id": "circle-since-2024"
+  },
+  {
+   "acknowledgement": null,
+   "age_seconds": 87,
+   "allocated": "900000",
+   "allowed_pct": 100,
+   "available": "100000",
+   "cap": "1000000",
+   "check_id": 18,
+   "checked_at": "2026-10-18T14:00:49.735857+00:00",
+   "label": "Circle USDC Terms vs the version captured 2 Oct 2026",
+   "limit": "1000000",
+   "posture": "CHANGED",
+   "reason": "the terms changed, and every change was read in full and judged not adverse to holders",
+   "tracked": true,
+   "verdict": "CHANGED_NOT_ADVERSE",
+   "watch_id": "circle-since-2026"
+  },
+  {
+   "acknowledgement": {
+    "ack_id": 0,
+    "acknowledged_at": "2026-10-11T21:12:23.309182+00:00",
+    "acknowledged_by": "0x5cdb5699bc1038e115A973bb91A646f7E98C075b",
+    "change_digest": "a92c525b166197070748432c16dba4dc65d6ac0342717ce05391db9df702ae48",
+    "check_id": 8,
+    "current": true,
+    "note": "Reviewed Tether's change against Dec 2023: redemption minimums, no segregation of reserves, wide suspension and freezing rights. Accepted at half the cap.",
+    "verdict": "MATERIAL_ADVERSE_CHANGE",
+    "watch_id": "tether-since-2023"
+   },
+   "age_seconds": 68,
+   "allocated": "500000",
+   "allowed_pct": 50,
+   "available": "0",
+   "cap": "1000000",
+   "check_id": 19,
+   "checked_at": "2026-10-18T14:01:09.545263+00:00",
+   "label": "Tether Terms vs the version in force Dec 2023",
+   "limit": "500000",
+   "posture": "ADVERSE_ACKNOWLEDGED",
+   "reason": "a material adverse change, signed off on-chain by the owner",
+   "tracked": true,
+   "verdict": "MATERIAL_ADVERSE_CHANGE",
+   "watch_id": "tether-since-2023"
+  }
+ ],
+ "acks": [
+  {
+   "ack_id": 0,
+   "acknowledged_at": "2026-10-11T21:12:23.309182+00:00",
+   "acknowledged_by": "0x5cdb5699bc1038e115A973bb91A646f7E98C075b",
+   "change_digest": "a92c525b166197070748432c16dba4dc65d6ac0342717ce05391db9df702ae48",
+   "check_id": 8,
+   "note": "Reviewed Tether's change against Dec 2023: redemption minimums, no segregation of reserves, wide suspension and freezing rights. Accepted at half the cap.",
+   "verdict": "MATERIAL_ADVERSE_CHANGE",
+   "watch_id": "tether-since-2023"
+  }
+ ],
+ "allocations": [
+  {
+   "allocated_at": "2026-10-11T21:14:23.433111+00:00",
+   "allocated_by": "0x5cdb5699bc1038e115A973bb91A646f7E98C075b",
+   "allocation_id": 3,
+   "allowed_pct": 50,
+   "amount": "100000",
+   "check_id": 9,
+   "posture": "ADVERSE_ACKNOWLEDGED",
+   "watch_id": "tether-since-2023"
+  },
+  {
+   "allocated_at": "2026-10-11T21:12:32.391101+00:00",
+   "allocated_by": "0x5cdb5699bc1038e115A973bb91A646f7E98C075b",
+   "allocation_id": 2,
+   "allowed_pct": 50,
+   "amount": "400000",
+   "check_id": 8,
+   "posture": "ADVERSE_ACKNOWLEDGED",
+   "watch_id": "tether-since-2023"
+  },
+  {
+   "allocated_at": "2026-10-11T21:12:03.913084+00:00",
+   "allocated_by": "0x5cdb5699bc1038e115A973bb91A646f7E98C075b",
+   "allocation_id": 1,
+   "allowed_pct": 100,
+   "amount": "500000",
+   "check_id": 7,
+   "posture": "CHANGED",
+   "watch_id": "circle-since-2024"
+  },
+  {
+   "allocated_at": "2026-10-11T21:11:45.642162+00:00",
+   "allocated_by": "0x5cdb5699bc1038e115A973bb91A646f7E98C075b",
+   "allocation_id": 0,
+   "allowed_pct": 100,
+   "amount": "900000",
+   "check_id": 6,
+   "posture": "CLEAR",
+   "watch_id": "circle-since-2026"
+  }
+ ],
+ "watches": [
+  {
+   "baseline_timestamp": "20241103153936",
+   "check_count": 6,
+   "label": "Circle USDC Terms vs the version in force Oct 2024",
+   "live_url": "https://www.circle.com/legal/usdc-terms",
+   "watch_id": "circle-since-2024"
+  },
+  {
+   "baseline_timestamp": "20261002182005",
+   "check_count": 6,
+   "label": "Circle USDC Terms vs the version captured 2 Oct 2026",
+   "live_url": "https://www.circle.com/legal/usdc-terms",
+   "watch_id": "circle-since-2026"
+  },
+  {
+   "baseline_timestamp": "20240915223352",
+   "check_count": 8,
+   "label": "Tether Terms vs the version in force Dec 2023",
+   "live_url": "https://tether.to/en/legal/",
+   "watch_id": "tether-since-2023"
+  }
+ ],
+ "loadedAt": "2026-10-18T14:02:18.259Z"
+}

@@ -1,5 +1,6 @@
 import { view, type Signer } from "./genlayer";
 import RADAR_CODE from "./terms_radar_studio_next.py?raw";
+import SNAPSHOT from "../snapshot.json";
 
 // The official radar (the deployment proven in CONTRACT.md) and the TermsShift oracle it reads.
 export const RADAR = "0x5f5ce46A8096920B177914d119C1Af048C29BE71";
@@ -54,6 +55,8 @@ export type Watch = { watch_id: string; label: string; live_url: string; baselin
 export type Rules = { max_age_seconds: number; ladder: Record<string, number>; min_note_length: number };
 export type RadarData = {
   address: string; config: Config; rules: Rules; statuses: Status[]; acks: Ack[]; allocations: Allocation[]; watches: Watch[]; loadedAt: Date;
+  /** True for the read bundled with the site at build time (src/snapshot.json), never for a live or cached read. */
+  snapshot?: boolean;
 };
 
 export const same = (a: string, b: string) => a.toLowerCase() === b.toLowerCase();
@@ -68,6 +71,18 @@ export function cachedRadar(address: string): RadarData | null {
     const c = JSON.parse(localStorage.getItem(CACHE + address.toLowerCase()) ?? "null") as Cached | null;
     return c ? { ...c, loadedAt: new Date(c.loadedAt) } : null;
   } catch { return null; }
+}
+
+/** The official radar as it was read when this site was built (scripts/snapshot.ts). */
+export function snapshotRadar(address: string): RadarData | null {
+  const s = SNAPSHOT as unknown as Cached;
+  return same(address, s.address) ? { ...s, loadedAt: new Date(s.loadedAt), snapshot: true } : null;
+}
+
+/** What to show before a live read arrives, or if the chain cannot be read: this browser's last read, or the build's snapshot, whichever is newer. */
+export function fallbackRadar(address: string): RadarData | null {
+  const cached = cachedRadar(address), snap = snapshotRadar(address);
+  return cached && (!snap || cached.loadedAt >= snap.loadedAt) ? cached : snap;
 }
 
 export async function loadRadar(address: string): Promise<RadarData> {

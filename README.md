@@ -10,7 +10,7 @@
 | Live app | [termsradar.vercel.app](https://termsradar.vercel.app) (source in [`web/`](web/)) |
 | Live proof | [CONTRACT.md](CONTRACT.md): three real issuers, the whole allocation ladder, a sign-off that survives a re-check, every refusal, every transaction linked |
 | Trust path | [TRUST_PATH.md](TRUST_PATH.md): from the issuer's page, through TermsShift's validators, to an allocation, with line references, tests and live transactions |
-| Tests | 32 Direct Mode tests on TermsShift's real check records; 32 safety mutations, all killed; 9 tests tying the radar to the included TermsShift (whose own 44 tests run in place); 24 web-app tests |
+| Tests | 32 Direct Mode tests on TermsShift's real check records; 32 safety mutations, all killed; 9 tests tying the radar to the included TermsShift (whose own 44 tests run in place); 27 web-app tests |
 
 > **Accounting, not custody.** The radar records and limits allocations; it does not hold or move tokens. It is the control a treasury's own contracts or process consult before moving value, not the treasury itself.
 
@@ -23,6 +23,8 @@
 [TermsShift](https://github.com/HarrisonJL/termsshift) answers a factual question: have an issuer's published terms changed against holders since a baseline, in the six areas that matter (redemption, suspension, freezing, reserves, fees, amendment)? Its own consumer, TreasuryPolicy, is a switch: safe or blocked.
 
 Treasuries do not run on switches. An adverse change to Tether's terms is a reason to stop and read, not a reason to be locked out forever, and "we read it and accepted it at half the limit" is a decision that deserves a record. Terms Radar adds the part that is missing: a graded response, a human decision recorded on-chain, and a guarantee that the decision cannot be reused for different wording.
+
+**Not a change detector.** General tools, such as ChangeProof on the GenLayer Project Explorer, record whether a public page changed and by how much. Terms Radar answers a narrower question. TermsShift reads the six areas of a stablecoin issuer's terms that protect holders, and says whether a change is adverse to holders. The radar turns that verdict into an allocation limit, and it records a person's sign-off, which holds only for the exact wording that changed.
 
 ## How it decides
 
@@ -83,6 +85,14 @@ if status["allowed_pct"] == 0 or int(status["available"]) < amount:
 5. Under **Sign the change off**, write a note of at least 20 characters and click **Sign off**. The issuer becomes **Adverse, signed off**, with 50% of its cap available.
 6. Allocate part of it. Then try to allocate more than is left: the contract refuses, and says why.
 7. Optional: click **Ask TermsShift for a fresh check** and watch the validators vote (a minute or two). The sign-off still applies, because the wording is the same.
+
+## Keeping the evidence fresh
+
+The radar treats a check older than a day as stale, which allows nothing. Unattended, it would show every issuer at 0%, which is the safe failure but a useless demo. [`.github/workflows/refresh.yml`](.github/workflows/refresh.yml) asks TermsShift for a fresh check of each official issuer twice a day ([`studio-next/refresh.ts`](studio-next/refresh.ts)). It signs with a throwaway testnet account funded from Studio Next's faucet, so the repository holds no key. Anyone can do the same from the app with **Ask TermsShift for a fresh check**.
+
+The refreshes are real readings, not keep-alives. On 18 October one found that Circle had changed the wording of its **fees** section since the 2 October capture. TermsShift's validators read the change in full and judged it not adverse ([check 18](https://explorer-studio-dev.genlayer.com/tx/0x69af33cc33527f7b24b36603db951dcb0d001ec1c6d5f6140142f6b7c85b27a7)), so `circle-since-2026` moved from `CLEAR` to `CHANGED` and still allows 100% of its cap.
+
+If Studio Next cannot be read (it is a shared test network), the app does not go blank. It shows the browser's last read, or a snapshot of the official radar taken when the site was built ([`web/scripts/snapshot.ts`](web/scripts/snapshot.ts)), always labelled with the time it was taken and replaced as soon as a live read arrives.
 
 ## What this proves, and what it doesn't
 

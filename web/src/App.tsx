@@ -4,7 +4,7 @@ import { addressLink, errorText, onThrottle, short, type Signer } from "./lib/ge
 import { duration, fmtTime } from "./lib/format";
 import {
   AREAS, DESK_ARGS, LADDER_ORDER, POSTURE_NAME, POSTURE_RULE, POSTURE_TONE, RADAR, RADAR_SOURCE, SHIFT, amountProblem, boundAck,
-  boundAllocation, boundCheck, boundTracked, cachedRadar, deployedAddress, isOwner, loadCheck, loadRadar, noteProblem, same,
+  boundAllocation, boundCheck, boundTracked, fallbackRadar, deployedAddress, isOwner, loadCheck, loadRadar, noteProblem, same,
   saveDesk, savedDesk, shiftCheckCount, toUnits, type Check, type RadarData, type Status,
 } from "./lib/radar";
 import { useTransaction } from "./lib/useTransaction";
@@ -75,8 +75,8 @@ export default function App() {
   const [desk, setDesk] = useState(savedDesk);
   const [target, setTarget] = useState<"official" | "desk">("official");
   const address = target === "desk" && desk ? desk.address : RADAR;
-  const [data, setData] = useState<RadarData | null>(() => cachedRadar(RADAR));
-  const [stale, setStale] = useState(() => cachedRadar(RADAR) !== null);
+  const [data, setData] = useState<RadarData | null>(() => fallbackRadar(RADAR));
+  const [stale, setStale] = useState(() => fallbackRadar(RADAR) !== null);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [waitSec, setWaitSec] = useState(0);
@@ -88,7 +88,7 @@ export default function App() {
     setLoading(true); setError("");
     try { setData(await loadRadar(address)); setStale(false); } catch (e) { setError(errorText(e)); } finally { setLoading(false); }
   }, [address]);
-  useEffect(() => { setData(cachedRadar(address)); setStale(cachedRadar(address) !== null); void refresh(); }, [address, refresh]);
+  useEffect(() => { const f = fallbackRadar(address); setData(f); setStale(f !== null); void refresh(); }, [address, refresh]);
   const [, tick] = useState(0);
   useEffect(() => { const t = setInterval(() => tick((x) => x + 1), 30000); return () => clearInterval(t); }, []);
 
@@ -172,8 +172,8 @@ export default function App() {
           Radar <a className="mono" href={addressLink(address)} target="_blank" rel="noreferrer">{short(address)}</a>{" "}
           · reads TermsShift <a className="mono" href={addressLink(SHIFT)} target="_blank" rel="noreferrer">{short(SHIFT)}</a><br />
           {data
-            ? stale
-              ? `Showing the last read, from ${data.loadedAt.toLocaleString()}${loading ? " · reading the chain now…" : ""}`
+            ? stale || error
+              ? `${data.snapshot ? "Showing a snapshot of the chain taken" : "Showing the last read, from"} ${data.loadedAt.toLocaleString()}${loading ? " · reading the chain now…" : ""}`
               : `Read live from the chain at ${data.loadedAt.toLocaleTimeString()}`
             : loading ? "Reading the chain…" : ""}{" "}
           <button className="link" onClick={() => void refresh()} disabled={loading}>Refresh</button>
@@ -243,7 +243,7 @@ export default function App() {
       </Section>
 
       <Section title="Issuers" aside={<span className="sm">live from the radar, which reads TermsShift's latest check at this moment</span>}>
-        {error && <div className="err">Couldn't read the chain: {error}</div>}
+        {error && <div className="err">Couldn't read the chain: {error}{data && <> · The figures below are {data.snapshot ? "a snapshot taken when this site was built" : "this browser's last read"}, from {data.loadedAt.toLocaleString()}, not live. Studio Next is a shared test network: try Refresh in a minute.</>}</div>}
         {!data && !error && <p className="sub">Reading the chain…</p>}
         {data && statuses.length === 0 && <p className="sub">No issuers tracked yet. {owner ? "Track one below." : target === "desk" ? "Sign in as this desk's owner to track one." : ""}</p>}
         <div className="issuers">

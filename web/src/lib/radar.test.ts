@@ -1,7 +1,7 @@
 import { createHash } from "node:crypto";
 import { existsSync, readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
-import { MAX_NOTE, MIN_NOTE, RADAR_SOURCE, amountProblem, deployedAddress, isOwner, noteProblem, same, toUnits } from "./radar";
+import { MAX_NOTE, MIN_NOTE, RADAR, RADAR_SOURCE, amountProblem, deployedAddress, fallbackRadar, isOwner, noteProblem, same, snapshotRadar, toUnits } from "./radar";
 
 // The desk a visitor creates must run exactly the code the official radar runs.
 const DEPLOYED_SHA256 = "ac50a737edd42187fbef6112472b47b81db829a4fd3552b07aa75ad9a12f9838";
@@ -56,5 +56,32 @@ describe("owner and address handling", () => {
     expect(deployedAddress({ recipient: a })).toBe(a);
     expect(() => deployedAddress({})).toThrow();
     expect(() => deployedAddress({ to_address: "0x123" })).toThrow();
+  });
+});
+
+describe("the outage fallback", () => {
+  it("is a snapshot of the official radar, labelled as one, with its own time", () => {
+    const s = snapshotRadar(RADAR)!;
+    expect(s.snapshot).toBe(true);
+    expect(same(s.address, RADAR)).toBe(true);
+    expect(s.loadedAt.getTime()).not.toBeNaN();
+    expect(s.statuses.length).toBeGreaterThan(0);
+  });
+  it("is never shown for someone else's desk", () => {
+    expect(snapshotRadar("0x0000000000000000000000000000000000000001")).toBeNull();
+    expect(fallbackRadar("0x0000000000000000000000000000000000000001")).toBeNull(); // no cache in tests either
+  });
+  it("gives way to this browser's own read when that is newer", () => {
+    const store = new Map<string, string>();
+    (globalThis as any).localStorage = { getItem: (k: string) => store.get(k) ?? null, setItem: (k: string, v: string) => store.set(k, v), removeItem: (k: string) => store.delete(k) };
+    try {
+      const snap = snapshotRadar(RADAR)!;
+      const newer = { ...snap, snapshot: undefined, loadedAt: new Date(snap.loadedAt.getTime() + 60_000).toISOString() };
+      store.set("termsradar-cache-v1:" + RADAR.toLowerCase(), JSON.stringify(newer));
+      expect(fallbackRadar(RADAR)!.snapshot).toBeUndefined();
+      const older = { ...newer, loadedAt: new Date(snap.loadedAt.getTime() - 60_000).toISOString() };
+      store.set("termsradar-cache-v1:" + RADAR.toLowerCase(), JSON.stringify(older));
+      expect(fallbackRadar(RADAR)!.snapshot).toBe(true);
+    } finally { delete (globalThis as any).localStorage; }
   });
 });
